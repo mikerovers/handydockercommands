@@ -1,0 +1,14 @@
+#!/bin/bash
+
+containerCount="$(docker ps -aq | wc -l)"
+
+zero=0
+
+if [ "$containerCount" -gt $zero ]; then
+    ./dockerremovecontainers
+fi
+
+echo "Removing all images."
+docker rmi $(docker images -q)
+
+exit 0

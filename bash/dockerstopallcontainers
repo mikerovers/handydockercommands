@@ -4,6 +4,8 @@ countContainers="$(docker ps -q | wc -l)"
 
 zero=0
 
+echo $countContainers
+
 if [ "$countContainers" -eq $zero ]; then
     echo "There are no running containers to stop."
 else
