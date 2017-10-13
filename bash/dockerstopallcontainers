@@ -1,0 +1,14 @@
+#!/bin/bash
+
+countContainers="$(docker ps -q | wc -l)"
+
+zero=0
+
+if [ "$countContainers" -eq $zero ]; then
+    echo "There are no running containers to stop."
+else
+    echo "Stopping all docker containers."
+    echo "Stopped: " && docker stop $(docker ps -a -q)
+fi
+
+exit 0

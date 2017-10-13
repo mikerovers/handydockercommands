@@ -1,5 +1,0 @@
-#!/bin/bash
-
-echo "Stopping all docker containers."
-
-echo "Stopped: " && docker stop $(docker ps -a -q)
