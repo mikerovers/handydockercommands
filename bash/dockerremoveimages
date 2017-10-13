@@ -1,8 +1,14 @@
 #!/bin/bash
 
 containerCount="$(docker ps -aq | wc -l)"
+imageCount="$(docker images -q | wc -l)"
 
 zero=0
+
+if [ "$imageCount" -eq $zero ]; then
+    echo "There are no images to delete."
+    exit;
+fi
 
 if [ "$containerCount" -gt $zero ]; then
     ./dockerremovecontainers
