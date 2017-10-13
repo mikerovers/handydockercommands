@@ -1,5 +1,33 @@
 #!/bin/bash
 
-echo "Removing all docker containers."
+runningContainerCount="$(docker ps -q | wc -l)"
+containerCount="$(docker ps -aq | wc -l)"
 
-docker rm $(docker ps -a -q)
+zero=0
+options=("1: yes" "2: no")
+
+if [ "$containerCount" -eq $zero ]; then
+    echo "There are no containers to remove."
+    exit;
+fi
+
+if [ "$runningContainerCount" -gt $zero ]; then
+    echo "Do you want to stop all running containers?"
+    select yn in "${options[@]}" 
+    do
+        case $yn in 
+            "1: yes") 
+                ./dockerstopallcontainers
+                break;;
+            "2: no") 
+                exit 0
+                ;;
+            *) echo "Invalid options choose yes or no";;
+        esac
+    done
+fi
+
+echo "Removing all docker containers."
+docker rm $(docker ps -aq)
+
+exit 0
