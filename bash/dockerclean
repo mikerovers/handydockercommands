@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo "Cleaning whole docker."
+
+# Stops, deletes all containers and images.
+./dockerremoveimages
