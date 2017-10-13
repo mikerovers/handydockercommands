@@ -12,6 +12,7 @@ if [ "$containerCount" -eq $zero ]; then
 fi
 
 if [ "$runningContainerCount" -gt $zero ]; then
+    echo "There are still containers running."
     echo "Do you want to stop all running containers?"
     select yn in "${options[@]}" 
     do
